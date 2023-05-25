@@ -37,9 +37,8 @@ export default{
     <main>
         <div class="container">
             <div class="row">
-                <div class="col col-md-4">
-                    <h1>mainnn</h1>
-                    <AppCard></AppCard>
+                <div class="col col-md-4" v-for="data in projects">
+                    <AppCard :data="projects"></AppCard>
                 </div>
             </div>
         </div>
