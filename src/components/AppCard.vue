@@ -3,7 +3,7 @@ export default {
     name: 'AppCard',
     data() {
         return {
-
+            descriptionLenght: 50
         }
     },
     props: {
@@ -14,11 +14,11 @@ export default {
 
 <template>
     <div class="card">
-        <img  class="card-img-top" src="..." alt="Card image cap">
+        <img v-if="data.image"  class="card-img-top" :src="data.image" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ data.title }}</h5>
-            <p class="card-text">{{ data.description }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">{{ data.description.substring(0,descriptionLenght) + '...'}}</p>
+            <p class="card-text">{{ data.type.name }}</p>
         </div>
     </div>
 </template>
