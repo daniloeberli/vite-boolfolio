@@ -2,28 +2,34 @@
 import axios from 'axios';
 import AppCard from '../components/AppCard.vue';
 export default{
-    name: 'ProjectPage',
+    name: 'ProjectDetailPage',
     data() {
         return {
             apiBaseUrl: 'http://127.0.0.1:8000/api',
             apiUrls: {
                 projects: '/projects'
             },
-            projects: []
+            projects: null,
+            error: {
+                status: false,
+                message: ''
+            }
         }
     },
-     components: {
-         AppCard
-     },
+    //  components: {
+    //      AppCard
+    //  },
     methods: {
         getProjects() {
-            axios.get(this.apiBaseUrl + this.apiUrls.projects)
+            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + this.$route.params.id)
                  .then((response) => {
-                    //console.log(response);
+                    console.log(response);
                     this.projects = response.data.results;
                  })
                  .catch((error) => {
                     console.error(error);
+                    this.error.status = true;
+                    this.error.message = error.message;
                  })
         }
     },
@@ -34,16 +40,16 @@ export default{
 </script>
 
 <template>
-   <main>
-    <h3>TEST</h3>
+      <section v-if="projects">
         <div class="container">
-            <div class="row">
-                <div class="col col-md-4" v-for="data in projects">
-                    <AppCard :data="data"></AppCard>
-                </div>
-            </div>
+            <h1 class="mt-5 mb-3">{{ projects.title }}</h1>
         </div>
-    </main>
+    </section>
+    <section v-if="error.status">
+        <div class="container">
+            <p>{{ error.message }}</p>
+        </div>
+    </section>
 </template>
 
 <style scoped>
