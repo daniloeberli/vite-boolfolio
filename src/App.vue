@@ -15,7 +15,8 @@ export default {
 
 <template>
     <AppHeader></AppHeader>
-    <AppMain></AppMain>
+    <router-view></router-view>
+    <!-- <AppMain></AppMain> -->
     <AppFooter></AppFooter>
 </template>
 
