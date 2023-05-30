@@ -19,7 +19,7 @@ export default {
             <h5 class="card-title">{{ data.title }}</h5>
             <p class="card-text">{{ data.description.substring(0,descriptionLenght) + '...'}}</p>
             <p class="card-text">{{ data.type.name }}</p>
-            <router-link :to="{ name: 'projectDetail', params: { id: project.id } }" class="btn">
+            <router-link :to="{ name: 'projectDetail', params: { id: data.id } }" class="btn">
                 Project detail
             </router-link>
         </div>

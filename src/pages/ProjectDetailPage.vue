@@ -41,6 +41,7 @@ export default{
 
 <template>
       <section v-if="projects">
+        <h1>SONO NELLA SHOW</h1>
         <div class="container">
             <h1 class="mt-5 mb-3">{{ projects.title }}</h1>
         </div>
