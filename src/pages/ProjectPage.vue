@@ -1,6 +1,6 @@
 <script >
 import axios from 'axios';
-// import AppCard from './AppCard.vue';
+import AppCard from '../components/AppCard.vue';
 export default{
     name: 'ProjectPage',
     data() {
@@ -12,9 +12,9 @@ export default{
             projects: []
         }
     },
-    // components: {
-    //     AppCard
-    // },
+     components: {
+         AppCard
+     },
     methods: {
         getProjects() {
             axios.get(this.apiBaseUrl + this.apiUrls.projects)
@@ -34,9 +34,16 @@ export default{
 </script>
 
 <template>
-    <main>
-        <h2>sono project page</h2>
-    </main>
+   <main>
+    <h3>TEST</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-4" v-for="data in projects">
+                    <AppCard :data="data"></AppCard>
+                </div>
+            </div>
+        </div>
+    </main>>
 </template>
 
 <style scoped>
