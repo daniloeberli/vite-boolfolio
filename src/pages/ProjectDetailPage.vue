@@ -23,11 +23,11 @@ export default{
         getProjects() {
             axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + this.$route.params.id)
                  .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.projects = response.data.results;
                  })
                  .catch((error) => {
-                    console.error(error);
+                    // console.error(error);
                     this.error.status = true;
                     this.error.message = error.message;
                  })
@@ -44,6 +44,10 @@ export default{
         <h1>SONO NELLA SHOW</h1>
         <div class="container">
             <h1 class="mt-5 mb-3">{{ projects.title }}</h1>
+            <ul>
+                <li v-for="technology in projects.technologies">Technologies:<span class="badge bg-warning text-dark">{{ technology.name }}</span></li>
+            </ul>
+            <h3 class="mt-5 mb-3">Type: {{ projects.type.name }}</h3>
         </div>
     </section>
     <section v-if="error.status">

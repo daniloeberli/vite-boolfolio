@@ -37,6 +37,12 @@ export default {
 
                 .catch((error) => {
                     console.error(error);
+
+                    if(error.response.status === 404){
+                        console.log('ciaooo');
+                        this.$router.push({name: 'not-found'}); 
+                    }
+
                 })
         },
         nextPage() {
@@ -47,7 +53,7 @@ export default {
     },
     created() {
         this.getProjects();
-        console.log(this.projects);
+        // console.log(this.projects);
     }
 }
 </script>
