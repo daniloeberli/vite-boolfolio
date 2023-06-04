@@ -6,6 +6,7 @@ export default {
     data() {
         return {
             store,
+            currentTechnology: '',
             technologies: []
         }
     },
@@ -13,7 +14,7 @@ export default {
         getTechnologies() {
             axios.get(`${this.store.apiBaseUrl}/technologies`)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.technologies = response.data.results;
                 })
 
@@ -25,6 +26,10 @@ export default {
                     }
 
                 })
+        },
+        changePage(){
+            //console.log(this.currentType);
+            this.$router.push({name: 'technology',params: {slug: this.currentTechnology}});
         }
     },
     created() {
@@ -34,7 +39,7 @@ export default {
 </script>
 
 <template>
-    <select v-if="technologies.length>0">
-        <option v-for="technology in technologies ">{{ technology.name }}</option>
+    <select v-if="technologies.length>0" @change="changePage" v-model="currentTechnology">
+        <option :value="technology.slug" v-for="technology in technologies ">{{ technology.name }}</option>
     </select>
 </template>

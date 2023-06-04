@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.vue';
 import ProjectPage from './pages/ProjectPage.vue';
 import ProjectDetailPage from './pages/ProjectDetailPage.vue';
 import TypePage from './pages/TypePage.vue';
+import TechnologyPage from './pages/TechnologyPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
 
 export { router };
@@ -30,6 +31,11 @@ const router = createRouter({
             path: '/types/:slug',
             name: 'type',
             component: TypePage
+        },
+        {
+            path: '/technologies/:slug',
+            name: 'technology',
+            component: TechnologyPage
         },
         {
             path: '/:pathMatch(.*)*',
