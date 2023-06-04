@@ -6,6 +6,7 @@ export default {
     data() {
         return {
             store,
+            currentType: '',
             types: []
         }
     },
@@ -13,7 +14,7 @@ export default {
         getTypes() {
             axios.get(`${this.store.apiBaseUrl}/types`)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.types = response.data.results;
                 })
 
@@ -25,17 +26,30 @@ export default {
                     }
 
                 })
+        },
+        changePage(){
+            //console.log(this.currentType);
+            this.$router.push({name: 'type',params: {slug: this.currentType}});
         }
     },
     created() {
-        this.getTypes()
+        this.getTypes();
+
+        this.$watch(
+            () => this.$route.params,
+            (toParams, previousParams) => {
+                console.log({toParams})
+                console.log({previousParams})
+                this.getTypes();
+            }
+        )
     }
 }
 </script>
 
 <template>
-    <select v-if="types.length>0">
-        <option v-for="type in types ">{{ type.name }}</option>
+    <select v-if="types.length > 0" @change="changePage" v-model="currentType">
+        <option :value="type.slug" v-for="type in types ">{{ type.name }}</option>
     </select>
 </template>
 
