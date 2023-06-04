@@ -1,9 +1,10 @@
 <script >
+import TechnologyList from './TechnologyList.vue';
 import TypeList from './TypeList.vue';
 
 export default{
     name: "AppHeader",
-    components: { TypeList }
+    components: { TypeList, TechnologyList }
 }
 </script>
 
@@ -19,6 +20,9 @@ export default{
             </li>
             <li>
                 <TypeList></TypeList>
+            </li>
+            <li>
+                <TechnologyList></TechnologyList>
             </li>
         </ul>
     </header>
