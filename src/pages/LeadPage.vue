@@ -44,7 +44,7 @@ export default {
     <section>
         <div class="container">
             <h1>Contact us</h1>
-            <p v-if="status">Message sent!!</p>
+            <span class="badge badge-pill text-success" v-if="status">Message sent!!</span>
             <form @submit.prevent="sendLead">
                 <div class="mb-3">
                     <label for="author" class="form-label">Author</label>
@@ -54,7 +54,7 @@ export default {
                     <label for="content" class="form-label">Text</label>
                     <textarea class="form-control" id="content" rows="3" v-model="formData.content"></textarea>
                 </div>
-                <button class="btn btn-success">Send</button>
+                <button class="btn btn-success" >Send</button>
             </form>
         </div>
     </section>
