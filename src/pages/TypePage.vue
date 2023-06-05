@@ -20,6 +20,14 @@ export default {
     },
     created(){
         this.getType();
+        this.$watch(
+            () => this.$route.params,
+            (toParams, previousParams) => {
+                console.log({ toParams })
+                console.log({ previousParams })
+                this.getType();
+            }
+        )
     }
 }
 </script>
@@ -28,7 +36,7 @@ export default {
     <section v-if="type">
       <h1>Type: {{ type.name }}</h1>
       <ul>
-        <li v-for="project in type.project"> {{ project.name }}</li>
+        <li v-for="project in type.projects"> {{ project.name }}</li>
       </ul>
     </section>
 </template>

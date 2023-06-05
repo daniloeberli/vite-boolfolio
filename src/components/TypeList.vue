@@ -38,8 +38,8 @@ export default {
         this.$watch(
             () => this.$route.params,
             (toParams, previousParams) => {
-                console.log({toParams})
-                console.log({previousParams})
+                // console.log({toParams})
+                // console.log({previousParams})
                 this.getTypes();
             }
         )
@@ -47,10 +47,12 @@ export default {
 }
 </script>
 
+
 <template>
-    <select v-if="types.length > 0" @change="changePage" v-model="currentType">
-        <option :value="type.slug" v-for="type in types ">{{ type.name }}</option>
+    <select v-if="types.length>0" @change="changePage" v-model="currentType">
+        <option :value="prova.slug" v-for="prova in types ">{{ prova.name }}</option>
     </select>
 </template>
+
 
 

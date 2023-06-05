@@ -14,7 +14,7 @@ export default {
         getTechnology() {
             axios.get(`${this.store.apiBaseUrl}/technologies/${this.$route.params.slug}`)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.technology = response.data.results;
                 })
         }
@@ -24,8 +24,8 @@ export default {
         this.$watch(
             () => this.$route.params,
             (toParams, previousParams) => {
-                console.log({ toParams })
-                console.log({ previousParams })
+                // console.log({ toParams })
+                // console.log({ previousParams })
                 this.getTechnology();
             }
         )

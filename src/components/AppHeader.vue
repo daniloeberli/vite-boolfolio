@@ -24,6 +24,9 @@ export default{
             <li>
                 <TechnologyList></TechnologyList>
             </li>
+            <li>
+                <router-link :to="{ name: 'lead' }" class="nav-link">Contact Us</router-link>
+            </li>
         </ul>
     </header>
 </template>
